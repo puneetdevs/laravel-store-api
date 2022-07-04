@@ -1,12 +1,34 @@
 ## Setup Db config , copy .env.example to .env file and update db config
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=your_database_name
-DB_USERNAME=your_database_username
-DB_PASSWORD=your_database_password
+```bash
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=your_database_name
+    DB_USERNAME=your_database_username
+    DB_PASSWORD=your_database_password
+```
+
+## Run composer install to install dependecies
+```bash
+  composer install
+```
+## Run below command for migration to your database
+```bash
+  php artisan migrate
+```
+## You can setup virtual host or can run directly
+```bash
+  php artisan serve
+```
+
+## For accessing API's after login you need to use Token in the API's
 
 
+Get Token on Login API:
+![image description](/create_token_on_login.png)
+
+Use Token in Other API's:
+![image description](/use_token.png)
 
 ## About Laravel
 
