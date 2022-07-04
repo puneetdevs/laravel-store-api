@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\API\CartAPIController;
+use App\Http\Controllers\API\ProductsAPIController;
+use App\Http\Controllers\API\UserLoginAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
