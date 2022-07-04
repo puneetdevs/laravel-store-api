@@ -48,11 +48,4 @@ class User extends Authenticatable
         'store_name' => 'string',
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function user()
-    {
-        return $this->belongsTo(\App\Models\User::class, 'id', 'user_id');
-    }
 }

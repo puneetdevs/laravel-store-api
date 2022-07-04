@@ -24,3 +24,15 @@ Route::prefix('user')->group(function () {
     Route::post('/login', [UserLoginAPIController::class, 'login']);
     Route::get('/logout/{id}', [UserLoginAPIController::class, 'logout']);
 });
+
+// Merchant
+Route::group(['middleware' => ['APIToken', 'IsMerchant']], function () {
+    Route::prefix('product')->group(function () {
+        Route::get('/', [ProductsAPIController::class, 'index']);
+        Route::post('/create', [ProductsAPIController::class, 'store']);
+        Route::get('/show/{id}', [ProductsAPIController::class, 'show']);
+        Route::post('/update/{id}', [ProductsAPIController::class, 'update']);
+        Route::delete('/delete/{id}', [ProductsAPIController::class, 'destroy']);
+    });
+});
+
