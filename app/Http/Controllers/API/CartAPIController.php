@@ -50,4 +50,28 @@ class CartAPIController extends AppBaseController
 
         return $this->sendResponse($cart, 'Product Added to cart successfully');
     }
+
+    public function show(Request $request)
+    {
+        /** @var Cart $user */
+
+        $user_id = Auth::id();
+
+        $isUserExist = User::where('id', '=', $user_id)->count();
+        if (!$isUserExist) {
+            return $this->sendError('user does not xist', 404);
+        } else {
+            $user = User::where('id', '=', $user_id)->first();
+        }
+
+        $cartCount = Cart::where('user_id', '=', $user_id)->count();
+        if (!$cartCount) {
+            return $this->sendError('User do not have added product in cart', 404);
+        }
+
+        $data = $user->getCartData($user_id);
+
+        return $this->sendResponse($data, 'User Cart data retrieved successfully');
+    }
+
 }
