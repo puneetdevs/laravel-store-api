@@ -39,3 +39,10 @@ Route::group(['middleware' => ['APIToken', 'IsMerchant']], function () {
     });
 });
 
+// User
+Route::group(['middleware' => ['APIToken', 'IsCustomer']], function () {
+    Route::prefix('userCart')->group(function () {
+        Route::post('/add', [CartAPIController::class, 'store']);
+    });
+});
+
